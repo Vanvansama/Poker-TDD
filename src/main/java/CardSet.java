@@ -29,6 +29,9 @@ public class CardSet implements Comparable {
         Card[] cardArray = new Card[MAX_CARD_NUMBER];
         for (int i = 0; i < cardStringArray.length; i++) {
             Card card = new Card(cardStringArray[i]);
+            if (card.getSuit() == null && card.getRank() == 0) {
+                throw new RuntimeException("error card");
+            }
             if (card.getRank() == -1) {
                 throw new RuntimeException("error card");
             }

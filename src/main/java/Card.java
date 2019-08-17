@@ -10,8 +10,13 @@ public class Card {
     private String suit;
 
     public Card(String str) {
-        this.rank = Rank.getRankValue(String.valueOf(str.charAt(0)));
-        this.suit = String.valueOf(str.charAt(1));
+        if (str.length() == 3) {
+            this.rank = Rank.getRankValue(str.substring(0, 2));
+            this.suit = String.valueOf(str.charAt(2));
+        } else if (str.length() == 2) {
+            this.rank = Rank.getRankValue(String.valueOf(str.charAt(0)));
+            this.suit = String.valueOf(str.charAt(1));
+        }
     }
 
     public int getRank() {

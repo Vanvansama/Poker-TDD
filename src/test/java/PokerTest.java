@@ -34,6 +34,18 @@ public class PokerTest {
     }
 
     @Test
+    public void should_return_big_card_when_compare_give_one_card_error() {
+        String result = "";
+        try {
+            CardSet b = new CardSet("3C 6C 7C 8C 101C");
+        } catch (RuntimeException e) {
+            result = e.getMessage();
+        }
+
+        Assert.assertEquals(result, "error card");
+    }
+
+    @Test
     public void should_return_big_card_when_compare_two_card_diff() {
         CardSet b = new CardSet("2C 3C 7C 6C 4C");
         CardSet a = new CardSet("3C 9C 7C 8C 5C");
