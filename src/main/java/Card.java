@@ -9,13 +9,8 @@ public class Card {
     private int rank;
     private String suit;
 
-    public Card(int rank, String suit) {
-        this.rank = rank;
-        this.suit = suit;
-    }
-
     public Card(String str) {
-        this.rank = Integer.parseInt(String.valueOf(str.charAt(0)));
+        this.rank = Rank.getRankValue(String.valueOf(str.charAt(0)));
         this.suit = String.valueOf(str.charAt(1));
     }
 
