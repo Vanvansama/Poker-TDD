@@ -13,6 +13,7 @@ public class CardSet implements Comparable {
     public static final int ONE_PAIR = 20;
     public static final int MAX_CARD_NUMBER = 5;
     public static final int MAX_ONE_CARD_POINT = 14;
+    public static final int TWO_PAIR = 30;
 
     private Card[] cards = new Card[5];
 
@@ -71,7 +72,9 @@ public class CardSet implements Comparable {
     }
 
     private int getPoints() {
-        if (getPair() == 1) {
+        if (getPair() == 2) {
+            return TWO_PAIR;
+        } else if (getPair() == 1) {
             return ONE_PAIR;
         } else {
             return getHigh();
