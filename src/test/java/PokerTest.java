@@ -81,4 +81,24 @@ public class PokerTest {
 
         Assert.assertEquals(result, 1);
     }
+
+    @Test
+    public void should_return_big_card_when_compare_one_card_with_three_another_with_two_pair() {
+        CardSet a = new CardSet("3C 3H 5D 5S 7C");
+        CardSet b = new CardSet("6C 6C 6S 8C 9C");
+
+        int result = a.compareTo(b);
+
+        Assert.assertEquals(result, -1);
+    }
+
+    @Test
+    public void should_return_big_card_when_compare_one_card_with_three_another_with_one_pair() {
+        CardSet a = new CardSet("3C 3H 4D 5S 7C");
+        CardSet b = new CardSet("6C 6C 6S 8C 9C");
+
+        int result = a.compareTo(b);
+
+        Assert.assertEquals(result, -1);
+    }
 }
