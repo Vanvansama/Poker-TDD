@@ -15,7 +15,7 @@ public class Card {
     }
 
     public Card(String str) {
-        this.rank = str.charAt(0);
+        this.rank = Integer.parseInt(String.valueOf(str.charAt(0)));
         this.suit = String.valueOf(str.charAt(1));
     }
 
