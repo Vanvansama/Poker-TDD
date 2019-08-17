@@ -18,6 +18,7 @@ public class CardSet implements Comparable {
     public static final int STRAIGHT = 50;
     public static final int FLUSH = 60;
     public static final int FULL_HOUSE = 70;
+    public static final int FOUR = 80;
 
     private Card[] cards = new Card[5];
 
@@ -111,9 +112,15 @@ public class CardSet implements Comparable {
         return (getPair() == 4);
     }
 
+    public boolean isFour() {
+        return (getPair() == 6);
+    }
+
 
     private int getPoints() {
-        if (isFullHouse()) {
+        if (isFour()) {
+            return FOUR;
+        } else if (isFullHouse()) {
             return FULL_HOUSE;
         } else if (isFlush()) {
             return FLUSH;
