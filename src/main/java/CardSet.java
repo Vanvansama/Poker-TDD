@@ -15,6 +15,7 @@ public class CardSet implements Comparable {
     public static final int MAX_ONE_CARD_POINT = 14;
     public static final int TWO_PAIR = 30;
     public static final int THREE = 40;
+    public static final int STRAIGHT = 50;
 
     private Card[] cards = new Card[5];
 
@@ -82,8 +83,23 @@ public class CardSet implements Comparable {
         return (getPair() == 3);
     }
 
+    private int isStraight() {
+        int a = cards[4].getRank() - cards[3].getRank();
+        int b = cards[3].getRank() - cards[2].getRank();
+        int c = cards[2].getRank() - cards[1].getRank();
+        int d = cards[1].getRank() - cards[0].getRank();
+        if (a == b && b == c && c == d) {
+            return 1;
+        } else if (a == b && b == c && d == 9) {
+            return 2;
+        }
+        return 0;
+    }
+
     private int getPoints() {
-        if (isThree()) {
+        if (isStraight() != 0) {
+            return STRAIGHT;
+        } else if (isThree()) {
             return THREE;
         } else if (getPair() == 2) {
             return TWO_PAIR;
