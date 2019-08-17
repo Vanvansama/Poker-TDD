@@ -19,6 +19,8 @@ public class CardSet implements Comparable {
     public static final int FLUSH = 60;
     public static final int FULL_HOUSE = 70;
     public static final int FOUR = 80;
+    public static final int ROYAL = 100;
+    public static final int STRAIGHT_FLUSH = 90;
 
     private Card[] cards = new Card[5];
 
@@ -116,9 +118,20 @@ public class CardSet implements Comparable {
         return (getPair() == 6);
     }
 
+    public boolean isStraightFlush() {
+        return (isStraight() == 1) && isFlush();
+    }
+
+    public boolean isRoyal() {
+        return (isStraight() == 2) && isFlush();
+    }
 
     private int getPoints() {
-        if (isFour()) {
+        if (isRoyal()) {
+            return ROYAL;
+        } else if (isStraightFlush()) {
+            return STRAIGHT_FLUSH;
+        } else if (isFour()) {
             return FOUR;
         } else if (isFullHouse()) {
             return FULL_HOUSE;
