@@ -17,6 +17,7 @@ public class CardSet implements Comparable {
     public static final int THREE = 40;
     public static final int STRAIGHT = 50;
     public static final int FLUSH = 60;
+    public static final int FULL_HOUSE = 70;
 
     private Card[] cards = new Card[5];
 
@@ -97,7 +98,7 @@ public class CardSet implements Comparable {
         return 0;
     }
 
-    public boolean isFlush() {
+    private boolean isFlush() {
         for (int i = 0; i < 4; i++) {
             if (!cards[i].getSuit().equals(cards[i + 1].getSuit())) {
                 return false;
@@ -106,8 +107,15 @@ public class CardSet implements Comparable {
         return true;
     }
 
+    private boolean isFullHouse() {
+        return (getPair() == 4);
+    }
+
+
     private int getPoints() {
-        if (isFlush()) {
+        if (isFullHouse()) {
+            return FULL_HOUSE;
+        } else if (isFlush()) {
             return FLUSH;
         } else if (isStraight() != 0) {
             return STRAIGHT;

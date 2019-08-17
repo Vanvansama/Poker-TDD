@@ -144,4 +144,14 @@ public class PokerTest {
 
         Assert.assertEquals(result, -1);
     }
+
+    @Test
+    public void should_return_big_card_when_compare_one_card_with_full_house_another_with_flush() {
+        CardSet a = new CardSet("3D 4D 5D 6D 7D");
+        CardSet b = new CardSet("6C 6S 6C 9D 9C");
+
+        int result = a.compareTo(b);
+
+        Assert.assertEquals(result, -1);
+    }
 }
